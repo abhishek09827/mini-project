@@ -4,14 +4,11 @@ import { Badge } from "../../../../components/ui/badge";
 import { ScrollArea } from "../../../../components/ui/scroll-area";
 import { Separator } from "../../../../components/ui/separator";
 import { useMail } from "../use-mail";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useComm } from "../useComment.js";
 
-export function MailList({ items }) {
-  const [mail, setMail] = useMail();
-  const[tags, setTags] = useState([])
-  
-  console.log(tags);
+export function CommentList({ items }) {
+  const [mail, setMail] = useComm();
+
 
   return (
     <ScrollArea className="h-screen">
@@ -24,13 +21,10 @@ export function MailList({ items }) {
               mail.selected === item.author_id && "bg-muted",
             )}
             onClick={() =>
-              {
-                setMail({
+              setMail({
                 ...mail,
                 selected: item.author_id,
               })
-              tagsData(mail.cleaned_content);
-            }
             }
           >
             <div className="flex w-full flex-col gap-1">
@@ -57,15 +51,15 @@ export function MailList({ items }) {
             <div className="line-clamp-2 text-xs text-muted-foreground">
               {item.cleaned_content.substring(0, 300)}
             </div>
-            {tags.length ? (
+            {/* {item.labels.length ? (
               <div className="flex items-center gap-2">
-                {tags.map((label) => (
+                {item.labels.map((label) => (
                   <Badge key={label} variant={getBadgeVariantFromLabel(label)}>
                     {label}
                   </Badge>
                 ))}
               </div>
-            ) : null}
+            ) : null} */}
            
           </button>
         ))}

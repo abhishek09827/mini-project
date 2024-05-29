@@ -1,6 +1,7 @@
 import addDays from "date-fns/addDays";
 import addHours from "date-fns/addHours";
 import format from "date-fns/format";
+import ReactMarkdown from 'react-markdown';
 import nextSaturday from "date-fns/nextSaturday";
 import {
   Archive,
@@ -12,6 +13,7 @@ import {
   ReplyAll,
   Trash2,
 } from "lucide-react";
+import { ScrollArea } from "../../../../components/ui/scroll-area";
 import axios from "axios";
 import {
   DropdownMenuContent,
@@ -20,6 +22,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "../../../../components/ui/avatar";
 import { Button } from "../../../../components/ui/button";
 import { Calendar } from "../../../../components/ui/calendar";
+import { Badge } from "../../../../components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -38,17 +41,20 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "../../../../components/ui/tooltip";
-import { comments } from "../data";
+
 import { useEffect, useState } from "react";
 export function MailDisplay({ mail }) {
   const today = new Date();
   const [data, setData] = useState("")
+  const [tdata, setTrendsData] = useState("")
+  console.log(mail);
+  console.log(mail.comments);
+  const [tags, setTags] = useState(['positive', 'feedback', 'medium'])
   useEffect(() => {
     const fetchData = async () => {
-      console.log(comments);
 
       const dataToSend = {
-        reviews: comments
+        reviews: mail.comments
       };
 
       try {
@@ -62,6 +68,41 @@ export function MailDisplay({ mail }) {
         setIsLoading(false);
       }
     };
+    const trendsData = async () => {
+      const dataToSend = {
+        reviews: mail.comments
+      };
+
+      try {
+        const response = await axios.post('http://127.0.0.1:5000/trends_review', dataToSend);
+        const data = response.data.trends;
+        setTrendsData(data) // Assuming the response contains the data in `response.data`
+        console.log('Response:', data);
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    const tagsData = async () => {
+      const dataToSend = {
+        text: mail.cleaned_content
+      };
+
+      try {
+        const response = await axios.post('http://127.0.0.1:5000/analyze', dataToSend);
+        const data = response.data;
+        setTags(data) // Assuming the response contains the data in `response.data`
+        console.log('Response:', data);
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    tagsData();
+    trendsData()
 
     fetchData();
   }, [mail]); 
@@ -71,6 +112,7 @@ export function MailDisplay({ mail }) {
 
 
   return (
+    
     <div className="flex h-full flex-col dark:text-zinc-200">
       <div className="flex items-center p-2">
         <div className="flex items-center gap-2">
@@ -207,8 +249,19 @@ export function MailDisplay({ mail }) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+      
       <Separator />
+      {tags.length ? (
+              <div className="flex items-center gap-2">
+                {tags.map((label) => (
+                  <Badge key={label} variant={getBadgeVariantFromLabel(label)}>
+                    {label}
+                  </Badge>
+                ))}
+              </div>
+            ) : null}
       {mail ? (
+        
         <div className="flex flex-1 flex-col">
           <div className="flex items-start p-4">
             <div className="flex items-start gap-4 text-sm">
@@ -225,17 +278,25 @@ export function MailDisplay({ mail }) {
                 <div className="font-semibold">{mail.platform}</div>
                 
                 <div className="line-clamp-1 text-xs">{mail.cleaned_content}</div>
-                <div className="line-clamp-1 text-xs">
-                </div>
+                
               </div>
             </div>
             
+            
           </div>
+          <ScrollArea className="h-screen">
           <Separator />
+          
           <div className="flex-1 whitespace-pre-wrap p-4 text-sm">
-            {data}
+          <ReactMarkdown>{`Insights : ${data}`}</ReactMarkdown>
           </div>
           <Separator className="mt-auto" />
+          <div className="flex-1 whitespace-pre-wrap p-4 text-sm">
+          <ReactMarkdown>{`Trends : ${tdata}`}</ReactMarkdown>
+            
+          </div>
+          <Separator className="mt-auto" />
+          </ScrollArea>
           <div className="p-4">
             <form>
               <div className="grid gap-4">
@@ -267,8 +328,21 @@ export function MailDisplay({ mail }) {
         <div className="p-8 text-center text-muted-foreground">
           No message selected
         </div>
+        
       )}
+      
     </div>
   );
 }
 
+function getBadgeVariantFromLabel(label) {
+  if (["work"].includes(label.toLowerCase())) {
+    return "default";
+  }
+
+  if (["personal"].includes(label.toLowerCase())) {
+    return "outline";
+  }
+
+  return "secondary";
+}

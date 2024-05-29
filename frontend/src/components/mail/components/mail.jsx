@@ -29,7 +29,8 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "../../../../components/ui/resizable";
-import { reels } from "../data";
+import { comments, reels } from "../data";
+import { CommentList } from "./comment-list";
 
 export function Mail({
   accounts,
@@ -81,14 +82,14 @@ export function Mail({
         <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
           <Tabs defaultValue="all">
             <div className="flex items-center px-4 py-2">
-              <h1 className="text-xl font-bold dark:text-zinc-200">Inbox</h1>
+              <h1 className="text-xl font-bold dark:text-zinc-200">Analysis</h1>
               <TabsList className="ml-auto">
                 <TabsTrigger value="all" className="text-zinc-600 dark:text-zinc-200">
-                  All mail
+                  All 
                 </TabsTrigger>
-                <TabsTrigger value="unread" className="text-zinc-600 dark:text-zinc-200">
+                {/* <TabsTrigger value="unread" className="text-zinc-600 dark:text-zinc-200">
                   Unread
-                </TabsTrigger>
+                </TabsTrigger> */}
               </TabsList>
             </div>
             <Separator />
@@ -103,14 +104,15 @@ export function Mail({
             <TabsContent value="all" className="m-0">
               <MailList items={reels} />
             </TabsContent>
-            <TabsContent value="unread" className="m-0 dark:text-zinc-200">
-              <MailList items={reels.filter((item) => !item.read)} />
-            </TabsContent>
+            {/* <TabsContent value="unread" className="m-0 dark:text-zinc-200">
+              <CommentList items={comments} />
+            </TabsContent> */}
           </Tabs>
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={defaultLayout[2]}>
           <MailDisplay mail={reels.find((item) => item.author_id === mail.selected) || null} />
+          
         </ResizablePanel>
       </ResizablePanelGroup>
     </TooltipProvider>

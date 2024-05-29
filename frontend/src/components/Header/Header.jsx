@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '../../../components/ui/avat
 import { Button } from '../../../components/ui/button.jsx';
 import { Input } from '../../../components/ui/input.jsx';
 
-
+import { Link } from 'react-router-dom';
 const Header = () => {
  return (
     <header className="flex items-center justify-between p-4 bg-black text-white">
@@ -20,7 +20,7 @@ const Header = () => {
             <Button variant="subtle">Overview</Button>
           </li>
           <li>
-            <Button variant="subtle">Analysis</Button>
+            <Link to={'/analysis'}><Button variant="subtle">Analysis</Button></Link>
           </li>
           <li>
             <Button variant="subtle">Tickets</Button>

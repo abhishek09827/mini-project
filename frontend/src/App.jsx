@@ -9,8 +9,8 @@ function App() {
 
   return (
     <>
-      {/* <Outlet /> */}
-      <MailPage />
+      <Outlet />
+      {/* <MailPage /> */}
     </>
   )
 }

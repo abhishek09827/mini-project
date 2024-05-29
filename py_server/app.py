@@ -2,16 +2,87 @@
 import os
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
+import asyncio
+from langchain.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
+
+
 from langchain.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import LLMChain
 from flask_cors import CORS
+import json
 load_dotenv()
 
 app = Flask(__name__)
 
 CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 chat_model = ChatGoogleGenerativeAI(model="gemini-1.5-flash",google_api_key="AIzaSyAVSHjy7mpfwjsStcK9YassCIL9BZOPKkA")
+
+sentisysPrompt = '''You are a sentiment analysis expert who can assign sentiment tags to user reviews. Analyze the sentiment of the following review: "{{text}}". You have to label the review as positive, negative, or neutral. The output should be a JSON with fields "category" and "reason". The "category" field should be one of "positive", "negative", "neutral". The "reason" field should be a string explaining the reason for the category. 
+
+Review: {text}
+
+Output:'''; 
+
+entityTaggingPromptContent = '''You are an expert at labeling a given Instagram Review as bug, feature_request, question, or feedback. You are given a review provided by a user for the app Instagram. You have to label the review as bug, feature_request, question, or feedback. The output should be a JSON with fields "category" and "reason". The "category" field should be one of "bug", "feature_request", "question", or "feedback". The "reason" field should be a string explaining the reason for the category. 
+
+Review: {text}
+
+Output:'''; 
+
+intentClassificationPromptContent = '''You are an intent classification expert. Classify the intent of the following text: "{text}" into urgent, low, and medium category label. The output should be a JSON with fields "category" and "reason". The "category" field should include the intent. The "reason" field should be a string explaining the reason for the category. 
+
+Review: {text}
+
+Output:'''; 
+
+sentichatPrompt = ChatPromptTemplate.from_messages([
+    SystemMessagePromptTemplate.from_template(sentisysPrompt),
+    HumanMessagePromptTemplate.from_template(''),
+])
+
+entityTaggingChatPrompt = ChatPromptTemplate.from_messages([
+    SystemMessagePromptTemplate.from_template(entityTaggingPromptContent),
+    HumanMessagePromptTemplate.from_template(''),
+])
+
+intentClassificationChatPrompt = ChatPromptTemplate.from_messages([
+    SystemMessagePromptTemplate.from_template(intentClassificationPromptContent),
+    HumanMessagePromptTemplate.from_template(''),
+])
+
+@app.route('/analyze', methods=['POST'])
+def analyze_text():
+    try:
+        data = request.get_json()
+        text = data['text']
+        chain = LLMChain(llm=chat_model, prompt=sentichatPrompt)
+        sentiment_result = chain.predict(text=text)
+
+        chain = LLMChain(llm=chat_model, prompt=entityTaggingChatPrompt)
+        entity_tagging_result = chain.predict(text=text)
+
+        chain = LLMChain(llm=chat_model, prompt=intentClassificationChatPrompt)
+        intent_classification_result = chain.predict(text=text)
+        
+        combined_result = {
+            'sentiment_analysis': sentiment_result,
+            'entity_tagging': entity_tagging_result,
+            'intent_classification': intent_classification_result
+        }
+        categories = []
+
+        for value in combined_result.values():
+            json_string = value.replace('```json\n', '').replace('\n```', '')
+            json_object = json.loads(json_string)
+            categories.append(json_object['category'])
+
+        print(categories)
+
+        return categories
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 @app.route('/process_reviews', methods=['POST'])
