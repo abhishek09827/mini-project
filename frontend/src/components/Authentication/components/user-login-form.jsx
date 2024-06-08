@@ -5,22 +5,24 @@ import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Label } from "../../../../components/ui/label";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 export function UserLoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     password: ""
   });
-
-  async function onSubmit(event) {
+  const navigate = useNavigate()
+async function onSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:3000/company/login', formData);
+      // const response = await axios.post('http://localhost:3000/company/login', formData);
 
-      const data = await response.data.response;
-      console.log('Response:', data);
+      // const data = await response.data.response;
+      // console.log('Response:', data);
+      navigate('/user/dashboard')
+     
     } catch (error) {
       console.error('Error:', error);
     } finally {

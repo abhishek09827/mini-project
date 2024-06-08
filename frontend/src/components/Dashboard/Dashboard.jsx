@@ -1,3 +1,4 @@
+import { useState,useEffect } from "react";
 import { Button } from "../../../components/ui/button";
 import {
   Card,
@@ -13,16 +14,59 @@ import { Search } from "../Dashboard/components/search.jsx";
 import TeamSwitcher from "../Dashboard/components/team-switcher.jsx";
 import { UserNav } from "../Dashboard/components/user-nav.jsx";
 import Header from "../Header/Header";
+import EngagementChart from "./Graph";
+import PlatformSwitcher from "./components/platform-switch";
+import { TwitterGraph, instagramDashData, twitterDashData } from "./data/data";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { InstaGraph } from "./data/data"; 
+const formatTime = (time) => {
+  const [day, hour] = time.split('_');
+  return `Day ${day}, Hour ${hour}`;
+};
+
 
 export const metadata = {
   title: "Dashboard",
   description: "Example dashboard app built using the components.",
 };
+const groups = [
+  {
+    label: "Accounts",
+    teams: [
+      {
+        label: "Instagram",
+        value: "instagram",
+      },
+      {
+        label: "Twitter",
+        value: "twitter",
+      },
+    ],
+  },
+];
+
+
 
 export default function Dashboard() {
+  const [data, setData] = useState(instagramDashData)
+  const [graphData, setgraphData] = useState(InstaGraph)
+  
+  const [selectedTeam, setSelectedTeam] = useState(groups[0].teams[0]);
+  useEffect(() => {
+    if(selectedTeam.value ==='twitter'){
+      console.log(selectedTeam.value);
+      setData(twitterDashData)
+      setgraphData(TwitterGraph)
+    }
+    else if(selectedTeam.value === 'instagram'){
+      setData(instagramDashData)
+      setgraphData(InstaGraph)
+    }
+  }, [selectedTeam])
+  
+  
   return (
     <>
-    <Header />
       <div className="md:hidden">
         <image
           src="/examples/dashboard-light.png"
@@ -42,7 +86,8 @@ export default function Dashboard() {
       <div className="hidden flex-col md:flex">
         <div className="border-b">
           <div className="flex h-16 items-center px-4">
-            <TeamSwitcher />
+          <PlatformSwitcher selectedTeam={selectedTeam} setSelectedTeam={setSelectedTeam} />
+                
            
             <div className="ml-auto flex items-center space-x-4">
               {/* <Search /> */}
@@ -58,22 +103,15 @@ export default function Dashboard() {
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="analytics" disabled>
-                <a href="https://app.devrev.ai/abhishekk09827/works?quickAccessId=don%3Acore%3Advrv-us-1%3Adevo%2F1l0TrbZFtt%3Avista%2F4&stage=queued%2Cwork_in_progress%2Cawaiting_product_assist%2Cawaiting_development%2Cin_development%2Cawaiting_customer_response&type=ticket&dod=%5B%7B%22doi%22%3A%22TKT-3085%22%2C%22dot%22%3A%22work%22%2C%22swcv%22%3Afalse%7D%5D">Analytics</a>
-              </TabsTrigger>
-              <TabsTrigger value="reports" disabled>
-                Reports
-              </TabsTrigger>
-              <TabsTrigger value="notifications" disabled>
-                Notifications
-              </TabsTrigger>
+              
+              
             </TabsList>
             <TabsContent value="overview" className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Total Views
+                      User Count
                     </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -89,16 +127,16 @@ export default function Dashboard() {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">45,231</div>
+                    <div className="text-2xl font-bold">{data.data.usersCount}</div>
                     <p className="text-xs text-muted-foreground">
-                      +20.1% from last month
+                    +18.6% from last month
                     </p>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Subscriptions
+                    Avg Interactions
                     </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +154,7 @@ export default function Dashboard() {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+2350</div>
+                    <div className="text-2xl font-bold">{data.data.avgInteractions}</div>
                     <p className="text-xs text-muted-foreground">
                       +180.1% from last month
                     </p>
@@ -124,7 +162,7 @@ export default function Dashboard() {
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Tweets</CardTitle>
+                    <CardTitle className="text-sm font-medium">Avg Views</CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -140,7 +178,7 @@ export default function Dashboard() {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+12,234</div>
+                    <div className="text-2xl font-bold">{data.data.avgViews}</div>
                     <p className="text-xs text-muted-foreground">
                       +19% from last month
                     </p>
@@ -149,7 +187,7 @@ export default function Dashboard() {
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Active Now
+                    Avg ER
                     </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -165,33 +203,44 @@ export default function Dashboard() {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+573</div>
+                    <div className="text-2xl font-bold">{data.data.avgER}</div>
                     <p className="text-xs text-muted-foreground">
-                      +201 since last hour
                     </p>
                   </CardContent>
                 </Card>
               </div>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+              <div>
                 <Card className="col-span-4">
                   <CardHeader>
                     <CardTitle>Overview</CardTitle>
+                    
+
                   </CardHeader>
                   <CardContent className="pl-2">
-                    <Overview />
+                    <EngagementChart platform={selectedTeam.value}/>
                   </CardContent>
                 </Card>
                 <Card className="col-span-3">
                   <CardHeader>
-                    <CardTitle>Active Tickets</CardTitle>
+                    <CardTitle>Metrics</CardTitle>
                     <CardDescription>
-                      You have 3 active tickets.
+                      
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <RecentSales />
+                  <LineChart width={1600} height={600} data={graphData.data}>
+      <XAxis dataKey="time" tickFormatter={formatTime} />
+      <YAxis />
+      <CartesianGrid stroke="#f5f5f5" />
+      <Tooltip />
+      <Legend />
+      <Line type="monotone" dataKey="interactions" stroke="#8884d8" />
+      <Line type="monotone" dataKey="likes" stroke="#82ca9d" />
+      <Line type="monotone" dataKey="comments" stroke="#ffc658" />
+    </LineChart>
                   </CardContent>
                 </Card>
+                
               </div>
             </TabsContent>
           </Tabs>

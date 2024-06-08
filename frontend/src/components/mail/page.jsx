@@ -9,7 +9,7 @@ export default function MailPage() {
 
   return (
     <>
-      <div className="md:hidden">
+      <div className="hidden flex-col md:flex">
         {/* Content for small screens can be added here */}
       </div>
       <div className="hidden flex-col md:flex">

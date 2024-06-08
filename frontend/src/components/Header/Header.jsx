@@ -10,20 +10,21 @@ const Header = () => {
       <div className="flex items-center">
         <Avatar className="mr-4">
           <AvatarImage src="/avatar.jpg" alt="Avatar" />
-          <AvatarFallback>AB</AvatarFallback>
+          <AvatarFallback>OA</AvatarFallback>
         </Avatar>
-        <h1 className="text-2xl font-bold">Abhishek</h1>
+        <h1 className="text-2xl font-bold">Open AI</h1>
       </div>
       <nav>
         <ul className="flex items-center space-x-4">
           <li>
-            <Button variant="subtle">Overview</Button>
+          <Link to={'/user/dashboard'}><Button variant="subtle">Overview</Button></Link>
           </li>
           <li>
-            <Link to={'/analysis'}><Button variant="subtle">Analysis</Button></Link>
+            <Link to={'/user/analysis'}><Button variant="subtle">CRM</Button></Link>
           </li>
           <li>
-            <Button variant="subtle">Tickets</Button>
+          <Link to={'/user/video'}>
+            <Button variant="subtle">Video</Button></Link>
           </li>
           <li>
             <Button variant="subtle">AI Resommendation</Button>

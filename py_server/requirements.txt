@@ -1,4 +1,6 @@
-flask
+Flask
 python-dotenv
-langchain
-langchain-google-genai
+flask-cors
+langchain # Adjust this version to the actual one you need, as langchain is a hypothetical package in this context.
+langchain-google-genai  # Adjust this version to the actual one you need, as langchain-google-genai is a hypothetical package in this context.
+asyncio

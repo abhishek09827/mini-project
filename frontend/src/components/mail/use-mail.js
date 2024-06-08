@@ -1,12 +1,13 @@
 import { atom, useAtom } from "jotai";
-
-import { reels as mails } from "./data";
+import { LinkedIn, Instagram, Twitter } from "./data";
 
 const configAtom = atom({
-  selected: mails[0].author_id,
+  selected: LinkedIn[0].author_id,
 });
 
 // Custom hook to use the mail configuration atom
-export function useMail() {
+export function useMail(selectedAccount) {
+
+
   return useAtom(configAtom);
 }

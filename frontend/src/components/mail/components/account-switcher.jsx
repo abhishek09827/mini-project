@@ -10,9 +10,8 @@ import {
   SelectValue,
 } from "../../../../components/ui/select.jsx";
 
-export function AccountSwitcher({ isCollapsed, accounts }) {
-  const [selectedAccount, setSelectedAccount] = React.useState(accounts[0].email);
-
+export function AccountSwitcher({ isCollapsed, accounts, selectedAccount, setSelectedAccount }) {
+  
   return (
     <Select defaultValue={selectedAccount} onValueChange={setSelectedAccount}>
       <SelectTrigger

@@ -29,8 +29,13 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "../../../../components/ui/resizable";
-import { comments, reels } from "../data";
+import { atom, useAtom } from "jotai";
+
+
+
+import { comments, Instagram, Twitter, LinkedIn } from "../data";
 import { CommentList } from "./comment-list";
+import { useInsta } from "../useInsta";
 
 export function Mail({
   accounts,
@@ -40,7 +45,27 @@ export function Mail({
   navCollapsedSize,
 }) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
-  const [mail] = useMail();
+
+  const [selectedAccount, setSelectedAccount] = React.useState(accounts[0].email);
+
+  const [platform, setPlatform] = React.useState(LinkedIn);
+  const [selectedMailId, setSelectedMailId] = React.useState(LinkedIn[0].author_id);
+
+  React.useEffect(() => {
+    if(selectedAccount == 'LinkedIn'){
+      setPlatform(LinkedIn)
+    }
+    else if(selectedAccount == 'Twitter'){
+      setPlatform(Twitter)
+      setSelectedMailId(Twitter[0].author_id)
+    }
+    else{
+      setPlatform(Instagram)
+      setSelectedMailId(Instagram[0].author_id)
+    }
+  }, [selectedAccount])
+  
+  
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -71,7 +96,7 @@ export function Mail({
               isCollapsed ? "h-[52px]" : "px-2",
             )}
           >
-            <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
+            <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} selectedAccount={selectedAccount} setSelectedAccount={setSelectedAccount}/>
           </div>
           <Separator />
           
@@ -102,7 +127,7 @@ export function Mail({
               </form>
             </div>
             <TabsContent value="all" className="m-0">
-              <MailList items={reels} />
+              <MailList items={platform} onMailSelect={setSelectedMailId}/>
             </TabsContent>
             {/* <TabsContent value="unread" className="m-0 dark:text-zinc-200">
               <CommentList items={comments} />
@@ -111,7 +136,7 @@ export function Mail({
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={defaultLayout[2]}>
-          <MailDisplay mail={reels.find((item) => item.author_id === mail.selected) || null} />
+          <MailDisplay mail={platform.find((item) => item.author_id === selectedMailId) || null} />
           
         </ResizablePanel>
       </ResizablePanelGroup>
