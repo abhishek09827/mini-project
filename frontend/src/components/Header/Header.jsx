@@ -1,11 +1,15 @@
-import React from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '../../../components/ui/avatar.jsx';
-import { Button } from '../../../components/ui/button.jsx';
-import { Input } from '../../../components/ui/input.jsx';
+import React from "react";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "../../../components/ui/avatar.jsx";
+import { Button } from "../../../components/ui/button.jsx";
+import { Input } from "../../../components/ui/input.jsx";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 const Header = () => {
- return (
+  return (
     <header className="flex items-center justify-between p-4 bg-black text-white">
       <div className="flex items-center">
         <Avatar className="mr-4">
@@ -17,22 +21,26 @@ const Header = () => {
       <nav>
         <ul className="flex items-center space-x-4">
           <li>
-          <Link to={'/user/dashboard'}><Button variant="subtle">Overview</Button></Link>
+            <Link to={"/user/dashboard"}>
+              <Button variant="subtle">Overview</Button>
+            </Link>
           </li>
           <li>
-            <Link to={'/user/analysis'}><Button variant="subtle">CRM</Button></Link>
+            <Link to={"/user/analysis"}>
+              <Button variant="subtle">CRM</Button>
+            </Link>
           </li>
           <li>
-          <Link to={'/user/video'}>
-            <Button variant="subtle">Video</Button></Link>
+            <Link to={"/user/video"}>
+              <Button variant="subtle">Video</Button>
+            </Link>
           </li>
           <li>
-            <Button variant="subtle">AI Resommendation</Button>
+            <Button variant="subtle">AI Recommendation</Button>
           </li>
         </ul>
       </nav>
       <div className="flex items-center">
-
         <Input
           type="search"
           placeholder="Search..."

@@ -8,7 +8,11 @@ import {
 } from "@radix-ui/react-icons";
 
 import { cn } from "../../../../lib/utils.js";
-import { Avatar, AvatarFallback, AvatarImage } from "../../../../components/ui/avatar.jsx";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "../../../../components/ui/avatar.jsx";
 import { Button } from "../../../../components/ui/button.jsx";
 import {
   Command,
@@ -43,7 +47,6 @@ import {
   SelectValue,
 } from "../../../../components/ui/select.jsx";
 
-
 const groups = [
   {
     label: "Personal Account",
@@ -54,25 +57,28 @@ const groups = [
       },
     ],
   },
-    {
-      label: "Accounts",
-      teams: [
-        {
-          label: "Instagram",
-          value: "instagram",
-        },
-        {
-          label: "Twitter",
-          value: "twitter",
-        },
-      ],
-    },
-  ];
-  
+  {
+    label: "Accounts",
+    teams: [
+      {
+        label: "Instagram",
+        value: "instagram",
+      },
+      {
+        label: "Twitter",
+        value: "twitter",
+      },
+    ],
+  },
+];
+
 const PlatformSwitcher = ({ className, selectedTeam, setSelectedTeam }) => {
   const [open, setOpen] = useState(false);
   const [showNewTeamDialog, setShowNewTeamDialog] = useState(false);
-  
+  const handleClick = (team) => {
+    console.log(`Clicked on team: ${team.label}`);
+    setSelectedTeam(team);
+  };
 
   return (
     <Dialog open={showNewTeamDialog} onOpenChange={setShowNewTeamDialog}>
@@ -127,7 +133,7 @@ const PlatformSwitcher = ({ className, selectedTeam, setSelectedTeam }) => {
                           "ml-auto h-4 w-4",
                           selectedTeam.value === team.value
                             ? "opacity-100"
-                            : "opacity-0",
+                            : "opacity-0"
                         )}
                       />
                     </CommandItem>
@@ -136,7 +142,6 @@ const PlatformSwitcher = ({ className, selectedTeam, setSelectedTeam }) => {
               ))}
             </CommandList>
             <CommandSeparator />
-           
           </Command>
         </PopoverContent>
       </Popover>
@@ -186,6 +191,6 @@ const PlatformSwitcher = ({ className, selectedTeam, setSelectedTeam }) => {
       </DialogContent>
     </Dialog>
   );
-}
+};
 
 export default PlatformSwitcher;
