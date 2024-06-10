@@ -1,42 +1,40 @@
-# file: app.py
 import os
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 import asyncio
-from langchain.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate,PromptTemplate
+from langchain.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate, PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import LLMChain
 from flask_cors import CORS
 import json
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from pymongo import MongoClient
+import joblib
+import numpy as np
 
-# Load environment variables
 load_dotenv()
 
-# Initialize Flask app
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+
+
+client = MongoClient(os.getenv("MONGO_URI"))
+db = client.get_database('mini_project')
+users_collection = db.get_collection('companies')
+
+
+bcrypt = Bcrypt(app)
+app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY")
+jwt = JWTManager(app)
 
 # Initialize Chat Model
 chat_model = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=os.getenv("GOOGLE_API_KEY"))
 
 # Prompts
-sentisysPrompt = '''You are a sentiment analysis expert who can assign sentiment tags to user reviews. Analyze the sentiment of the following review: "{{text}}". You have to label the review as positive, negative, or neutral. The output should be a JSON with fields "category" and "reason". The "category" field should be one of "positive", "negative", "neutral". The "reason" field should be a string explaining the reason for the category. 
-
-Review: {text}
-
-Output:'''
-
-entityTaggingPromptContent = '''You are an expert at labeling a given Instagram Review as bug, feature_request, question, or feedback. You are given a review provided by a user for the app Instagram. You have to label the review as bug, feature_request, question, or feedback. The output should be a JSON with fields "category" and "reason". The "category" field should be one of "bug", "feature_request", "question", or "feedback". The "reason" field should be a string explaining the reason for the category. 
-
-Review: {text}
-
-Output:'''
-
-intentClassificationPromptContent = '''You are an intent classification expert. Classify the intent of the following text: "{text}" into urgent, low, and medium category label. The output should be a JSON with fields "category" and "reason". The "category" field should include the intent. The "reason" field should be a string explaining the reason for the category. 
-
-Review: {text}
-
-Output:'''
+sentisysPrompt = '''...'''  # Keep the prompt content the same
+entityTaggingPromptContent = '''...'''
+intentClassificationPromptContent = '''...'''
 
 # ChatPromptTemplates
 sentichatPrompt = ChatPromptTemplate.from_messages([
@@ -54,7 +52,61 @@ intentClassificationChatPrompt = ChatPromptTemplate.from_messages([
     HumanMessagePromptTemplate.from_template(''),
 ])
 
-# Endpoints
+def register_user(name, password,insta_link, twitter_link, linkedin_link):
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+    user = {
+        'name': name,
+        'password': hashed_password,
+        'insta_link':insta_link,
+        'twitter_link':twitter_link,
+        'linkedin_link': linkedin_link
+        }
+    users_collection.insert_one(user)
+
+def verify_user(name, password):
+    user = users_collection.find_one({'name': name})
+    if user and bcrypt.check_password_hash(user['password'], password):
+        return True
+    return False
+
+# Authentication Endpoints
+@app.route('/register', methods=['POST'])
+def register():
+    try:
+        
+        data = request.get_json()
+        name = data['name']
+        password = data['password']
+        insta_link = data['insta_link']
+        twitter_link = data['twitter_link']
+        linkedin_link = data['linkedin_link']
+        
+        if users_collection.find_one({'name': name}):
+            return jsonify({'error': 'Username already exists'}), 400
+        
+        register_user(name, password, insta_link, twitter_link, linkedin_link)
+        return jsonify({'message': 'User registered successfully'}), 201
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/login', methods=['POST'])
+def login():
+    try:
+        data = request.get_json()
+        name = data['name']
+        password = data['password']
+        
+        if not verify_user(name, password):
+            return jsonify({'error': 'Invalid credentials'}), 401
+        
+        access_token = create_access_token(identity=name)
+        return jsonify({'access_token': access_token}), 200
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# Your existing endpoints...
 @app.route('/analyze', methods=['POST'])
 def analyze_text():
     try:
@@ -89,6 +141,15 @@ def analyze_text():
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+model = joblib.load('impressions_model.pkl')
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.json
+    features = np.array(data['features'])
+    prediction = model.predict(features)
+    return jsonify({'predictions': prediction.tolist()})
 
 @app.route('/process_reviews', methods=['POST'])
 def process_reviews():

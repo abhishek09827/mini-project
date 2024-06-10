@@ -11,11 +11,9 @@ export function UserAuthForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    type: "",
     insta_link: "",
     linkedin_link: "",
     twitter_link: "",
-    address: "",
     password: ""
   });
   const navigate = useNavigate()
@@ -24,11 +22,11 @@ export function UserAuthForm() {
     event.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:3000/company/signup', formData);
-
+      const response = await axios.post('http://127.0.0.1:5000/register', formData);
+      console.log(response);
       const data = await response.data.response;
       console.log('Response:', data);
-      navigate('/dashboard')
+      navigate('/user/dashboard')
      
     } catch (error) {
       console.error('Error:', error);
@@ -66,21 +64,7 @@ export function UserAuthForm() {
               
             />
           </div>
-          <div className="grid gap-1">
-            <Label className="sr-only text-white" htmlFor="type">
-              Type
-            </Label>
-            <Input
-              id="type"
-              name="type"
-              placeholder="Type (service_based/product_based)"
-              type="text"
-              value={formData.type}
-              onChange={handleChange}
-              disabled={isLoading}
-              className="text-white"
-            />
-          </div>
+          
           <div className="grid gap-1">
             <Label className="sr-only text-white" htmlFor="insta_link">
               Instagram Link
@@ -126,21 +110,7 @@ export function UserAuthForm() {
               className="text-white"
             />
           </div>
-          <div className="grid gap-1">
-            <Label className="sr-only text-white" htmlFor="address">
-              Address
-            </Label>
-            <Input
-              id="address"
-              name="address"
-              placeholder="Address"
-              type="text"
-              value={formData.address}
-              onChange={handleChange}
-              disabled={isLoading}
-              className="text-white"
-            />
-          </div>
+          
           <div className="grid gap-1">
             <Label className="sr-only text-white" htmlFor="password">
               Password

@@ -13,6 +13,9 @@ import MailPage from "./components/mail/page.jsx";
 import Layout from "./Layout.jsx";
 import LoginPage from "./components/Authentication/Login.jsx";
 import VideoUpload from "./Video/VideoForm.jsx";
+import Forecast from "./components/Forecast/Forecast.jsx";
+import Researcher from "./Researcher/Researcher.jsx";
+import Vide from "./Vide/Vide.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +48,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/video",
-        element: <VideoUpload />,
+        element: <Vide />,
+      },
+      {
+        path: "/user/forecast",
+        element: <Forecast />,
+      },
+      {
+        path: "/user/researcher",
+        element: <Researcher />,
       },
     ],
   },

@@ -36,7 +36,14 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Button variant="subtle">AI Recommendation</Button>
+            <Link to={"/user/forecast"}>
+              <Button variant="subtle">Forecast</Button>
+            </Link>
+          </li>
+          <li>
+          <Link to={"/user/researcher"}>
+            <Button variant="subtle">Intelligent Researcher</Button>
+            </Link>
           </li>
         </ul>
       </nav>

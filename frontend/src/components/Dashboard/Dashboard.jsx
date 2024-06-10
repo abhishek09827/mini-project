@@ -27,6 +27,7 @@ import {
   Legend,
 } from "recharts";
 import { InstaGraph } from "./data/data";
+import { RecentSales } from "./components/recent-sales.jsx";
 const formatTime = (time) => {
   const [day, hour] = time.split("_");
   return `Day ${day}, Hour ${hour}`;
@@ -90,9 +91,8 @@ export default function Dashboard() {
               selectedTeam={selectedTeam}
               setSelectedTeam={setSelectedTeam}
             />
-
             <div className="ml-auto flex items-center space-x-4">
-              {/* <Search /> */}
+               {/* <Search /> */}
               {/* <UserNav /> */}
             </div>
           </div>
@@ -226,6 +226,17 @@ export default function Dashboard() {
                   </CardHeader>
                   <CardContent className="pl-2 p-12">
                     <EngagementChart platform={selectedTeam.value} />
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">
+                      Recents
+                    </CardTitle>
+                    
+                  </CardHeader>
+                  <CardContent>
+                    <RecentSales />
                   </CardContent>
                 </Card>
                 <Card className="col-span-3">

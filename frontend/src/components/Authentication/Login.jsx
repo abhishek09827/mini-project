@@ -55,6 +55,9 @@ export default function LoginPage() {
             </svg>
             Intelligent Insights
           </div>
+          <div className="relative z-20 mt-auto" >
+            <img src="https://cdn.leonardo.ai/users/60b506ce-f33e-4b59-8bad-2e3de2c14ab2/generations/7566dfae-e5fc-47d2-ad72-b2786ce7835c/variations/Default_Generate_a_image_for_front_page_of_dark_theme_website_1_7566dfae-e5fc-47d2-ad72-b2786ce7835c_0.png" alt="" srcset="" />
+          </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
               <p className="text-lg">

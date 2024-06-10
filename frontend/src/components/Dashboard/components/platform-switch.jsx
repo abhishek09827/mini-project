@@ -81,7 +81,8 @@ const PlatformSwitcher = ({ className, selectedTeam, setSelectedTeam }) => {
   };
 
   return (
-    <Dialog open={showNewTeamDialog} onOpenChange={setShowNewTeamDialog}>
+    <div>
+    <Dialog open={showNewTeamDialog} onOpenChange={setShowNewTeamDialog} >
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -190,6 +191,7 @@ const PlatformSwitcher = ({ className, selectedTeam, setSelectedTeam }) => {
         </DialogFooter>
       </DialogContent>
     </Dialog>
+    </div>
   );
 };
 

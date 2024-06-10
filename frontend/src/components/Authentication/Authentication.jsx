@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { cn } from "../../../lib/utils.js";
 import { buttonVariants } from "../../../components/ui/button.jsx";
 import { UserAuthForm } from "./components/user-auth-form.jsx";
-
+import MyImage from './Default_Generate_a_image_for_front_page_of_dark_theme_website_2.jpg';
 export const metadata = {
   title: "Authentication",
   description: "Authentication forms built using the components.",
@@ -53,9 +53,14 @@ export default function AuthenticationPage() {
               <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
             </svg>
             Intelligent Insights
+            
+          </div>
+          <div className="relative z-20 mt-auto" >
+            <img src="https://cdn.leonardo.ai/users/60b506ce-f33e-4b59-8bad-2e3de2c14ab2/generations/4a5868a8-6604-4a5c-8148-b2b1e0021b79/Default_Generate_a_image_for_front_page_of_dark_theme_website_1.jpg" alt="" srcset="" />
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
+           
               <p className="text-lg">
                 &ldquo;This library has saved me countless hours of work and
                 helped me deliver stunning designs to my clients faster than
