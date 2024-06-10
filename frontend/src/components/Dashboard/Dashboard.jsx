@@ -28,6 +28,8 @@ import {
 } from "recharts";
 import { InstaGraph } from "./data/data";
 import { RecentSales } from "./components/recent-sales.jsx";
+import { Button } from "../../../components/ui/button.jsx";
+import { Link } from "react-router-dom";
 const formatTime = (time) => {
   const [day, hour] = time.split("_");
   return `Day ${day}, Hour ${hour}`;
@@ -92,7 +94,7 @@ export default function Dashboard() {
               setSelectedTeam={setSelectedTeam}
             />
             <div className="ml-auto flex items-center space-x-4">
-               {/* <Search /> */}
+              <Link to={'/'}> <Button>Logout</Button></Link> 
               {/* <UserNav /> */}
             </div>
           </div>

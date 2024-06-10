@@ -152,7 +152,6 @@ export function Form({pred, setPred}) {
           <Button disabled={isLoading}>
             {isLoading ? 'Loading...' : 'Predict'}
           </Button>
-          {pred}
         </div>
       </form>
     </div>

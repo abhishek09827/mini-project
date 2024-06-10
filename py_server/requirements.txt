@@ -1,6 +1,10 @@
-Flask
-python-dotenv
-flask-cors
-langchain # Adjust this version to the actual one you need, as langchain is a hypothetical package in this context.
-langchain-google-genai  # Adjust this version to the actual one you need, as langchain-google-genai is a hypothetical package in this context.
-asyncio
+Flask==2.2.5
+Flask_Bcrypt==1.0.1
+Flask_Cors==3.0.10
+Flask_JWT_Extended==4.6.0
+joblib==1.2.0
+langchain==0.2.3
+langchain_google_genai==1.0.6
+numpy==1.25.2
+pymongo==3.12.0
+python-dotenv==1.0.1

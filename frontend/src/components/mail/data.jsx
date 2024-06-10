@@ -1431,37 +1431,124 @@ export const Twitter = [
       "platform": "twitter",
       "cleaned_content": "",
       "author_id": "tweet-662a4f0a726d8c2f4b6e73a1",
-      "comments": []
+      "comments": [
+            "",
+            "OpenAeye",
+            "that's absolutely incredible!",
+            "@yugedemo  testing webhooks",
+            "@ugctestdemoacc testing webhooks",
+            "OpenAI, oh where do I begin?\nA company of promise, now drowning in sin.\nStarted with dreams, but now it seems,\nThey're just another corporation, chasing schemes.\nTheir AI models, once hailed as divine,\nNow criticized and doubted, losing their shine.\nFrom GPT-2 to GPT-3, the progression's clear,\nBut underneath the surface, the flaws appear.\nTheir ethics in question, their intentions blurred,\nAre they serving humanity or just getting stirred?\nWith each new release, controversies arise,\nOpenAI's reputation takes a nosedive.\nTransparency lacking, accountability thin,\nOpenAI's flaws are showing, it's sink or swim.\nThe future uncertain, the trust eroding fast,\nCan OpenAI redeem itself, or is this the last?\nSo here's the verdict, as harsh as can be,\nOpenAI's flaws are there for all to see.\nBut in the end, will they rise or fall?\nOnly time will tell, the writing's on the wall.",
+            "Is this already available ?",
+            "Partnering with News Corp is NOT bringing a reliable voice to Chat - the Sun cant even be considered a newspaper!!! Its a tabloid that peddles blatant lies - the OG peddler of fake news. Explain to me how exactly this is beneficial please?",
+            "",
+            "Like si necesitas la voz de Cortana en Ghatgpt",
+            "I dont understand, I bought the membership for GPT but I dont see any video function?",
+            "Hi,Until yesterday I was able to use file upload but today, even when my version was 4.o, my upload had completely disappeared,how can I fix it?"
+        ],
     },
     {
       "platform": "twitter",
       "cleaned_content": "LLMs process text from multiple sources and may face conflicting instructions. We teach our models to follow instructions from the highest priority input, giving better defense against attacks.\n\nOur Safety Systems team is hiring: https://t.co/SbaqCd7n4n",
       "author_id": "tweet-662a4f0a726d8c2f4b6e73a2",
-      "comments": []
+      "comments": [
+            "",
+            "OpenAeye",
+            "that's absolutely incredible!",
+            "@yugedemo  testing webhooks",
+            "@ugctestdemoacc testing webhooks",
+            "OpenAI, oh where do I begin?\nA company of promise, now drowning in sin.\nStarted with dreams, but now it seems,\nThey're just another corporation, chasing schemes.\nTheir AI models, once hailed as divine,\nNow criticized and doubted, losing their shine.\nFrom GPT-2 to GPT-3, the progression's clear,\nBut underneath the surface, the flaws appear.\nTheir ethics in question, their intentions blurred,\nAre they serving humanity or just getting stirred?\nWith each new release, controversies arise,\nOpenAI's reputation takes a nosedive.\nTransparency lacking, accountability thin,\nOpenAI's flaws are showing, it's sink or swim.\nThe future uncertain, the trust eroding fast,\nCan OpenAI redeem itself, or is this the last?\nSo here's the verdict, as harsh as can be,\nOpenAI's flaws are there for all to see.\nBut in the end, will they rise or fall?\nOnly time will tell, the writing's on the wall.",
+            "Is this already available ?",
+            "Partnering with News Corp is NOT bringing a reliable voice to Chat - the Sun cant even be considered a newspaper!!! Its a tabloid that peddles blatant lies - the OG peddler of fake news. Explain to me how exactly this is beneficial please?",
+            "",
+            "Like si necesitas la voz de Cortana en Ghatgpt",
+            "I dont understand, I bought the membership for GPT but I dont see any video function?",
+            "Hi,Until yesterday I was able to use file upload but today, even when my version was 4.o, my upload had completely disappeared,how can I fix it?"
+        ],
     },
     {
       "platform": "twitter",
       "cleaned_content": "Introducing the Instruction Hierarchy, our latest safety research to advance robustness for prompt injections and other ways of tricking LLMs into executing unsafe actions. More details: https://t.co/cUZaaMRdEG",
       "author_id": "tweet-662a4f0a726d8c2f4b6e73a3",
-      "comments": []
+      "comments": [
+            "",
+            "OpenAeye",
+            "that's absolutely incredible!",
+            "@yugedemo  testing webhooks",
+            "@ugctestdemoacc testing webhooks",
+            "OpenAI, oh where do I begin?\nA company of promise, now drowning in sin.\nStarted with dreams, but now it seems,\nThey're just another corporation, chasing schemes.\nTheir AI models, once hailed as divine,\nNow criticized and doubted, losing their shine.\nFrom GPT-2 to GPT-3, the progression's clear,\nBut underneath the surface, the flaws appear.\nTheir ethics in question, their intentions blurred,\nAre they serving humanity or just getting stirred?\nWith each new release, controversies arise,\nOpenAI's reputation takes a nosedive.\nTransparency lacking, accountability thin,\nOpenAI's flaws are showing, it's sink or swim.\nThe future uncertain, the trust eroding fast,\nCan OpenAI redeem itself, or is this the last?\nSo here's the verdict, as harsh as can be,\nOpenAI's flaws are there for all to see.\nBut in the end, will they rise or fall?\nOnly time will tell, the writing's on the wall.",
+            "Is this already available ?",
+            "Partnering with News Corp is NOT bringing a reliable voice to Chat - the Sun cant even be considered a newspaper!!! Its a tabloid that peddles blatant lies - the OG peddler of fake news. Explain to me how exactly this is beneficial please?",
+            "",
+            "Like si necesitas la voz de Cortana en Ghatgpt",
+            "I dont understand, I bought the membership for GPT but I dont see any video function?",
+            "Hi,Until yesterday I was able to use file upload but today, even when my version was 4.o, my upload had completely disappeared,how can I fix it?"
+        ],
     },
     {
       "platform": "twitter",
       "cleaned_content": "Weve introduced more enterprise-grade features for API customers, including enhanced security, administrative controls, new Assistants API capabilities, and tools to help better manage costs. https://t.co/Ej8xxpML5T",
       "author_id": "tweet-662a4f0a726d8c2f4b6e73a4",
-      "comments": []
+     "comments": [
+        "Congratulations on the expansion with OpenAI Japan! It's an important step towards making AI accessible globally. I hope this trend continues, expanding to include a wider range of languages. This inclusivity not only opens doors for non-English speakers but also enriches the AI with diverse inputs. I'm looking forward to the day when text-to-speech technology will deliver as pleasurable an experience in German as in any other language. Keep up the great work! Waiting for GPT-5",
+        "Vladimir Alexeev",
+        "Create Stunning AI fashion photography for your brand using AI\nIntroducing Adstronaut AI , a Generative AI platform designed to help clothing brands and retailers turn their photos into stunning and diversified fashion photos\nTRY it out for FREE now!\nhttps://www.adstronaut.net/",
+        "Woow OpenAI's new Japan office and the optimized GPT-4 for Japanese are big steps. It means more focus on Asia and better AI for the Japanese language. Looking forward to seeing the impact.",
+        "How much is the difference in performance if some content inJapanese is translated to English and then the sameGPT is used as that for English, and if a GPT usesthe content in Japanese for training, then operateson Japanese content(input, output), and then theoutput is translated to English. Also, we can have areverse case, where the final output is desired inJapanese. I guess, the translation quality could be a problem.",
+        "",
+        "This is great provided you update your ethics too,  which I find eurocentric. In Asia the Swastika is a well being symbol. Tried to used it Dall-E and got all sort of comment that is related to western history and nothing to do with the world let alone the true meaning of the Swastika.... only one exemple among many.",
+        "Hi, I want you to give me back my money. You took almost 70 each month since 4 months, for a workspace that I have never used. I was for 2 people. I am alone. I tried it for free but I never used it. I want my money back. And I am so upset that I have stopped my ChatGPT each month. What you have done its not nice at all for someone who is close to you since the beginning",
+        "Big move OpenAI, we wish you success in Japan and Asia!",
+        "Lyckle Griek",
+        "Great step into the globalization of ChatGPT",
+        "Congratulations! This is a great step into a new market.",
+        "Global is the real village! Let us know of Africa plans",
+        "It is truly remarkable to see how far your team has come. from publishing ChatGPT, to everything you have achieved. Congratulations!",
+        "Let's go !"
+      ]
     },
     {
       "platform": "twitter",
       "cleaned_content": "We commit to @thorn and @AllTechIsHuman's Safety by Design principles to ensure child safety is prioritized in the development and deployment of AI tools. https://t.co/bnWSt13tfj",
       "author_id": "tweet-662a4f0a726d8c2f4b6e73a5",
-      "comments": []
+      "comments": [
+        "Congratulations on the expansion with OpenAI Japan! It's an important step towards making AI accessible globally. I hope this trend continues, expanding to include a wider range of languages. This inclusivity not only opens doors for non-English speakers but also enriches the AI with diverse inputs. I'm looking forward to the day when text-to-speech technology will deliver as pleasurable an experience in German as in any other language. Keep up the great work! Waiting for GPT-5",
+        "Vladimir Alexeev",
+        "Create Stunning AI fashion photography for your brand using AI\nIntroducing Adstronaut AI , a Generative AI platform designed to help clothing brands and retailers turn their photos into stunning and diversified fashion photos\nTRY it out for FREE now!\nhttps://www.adstronaut.net/",
+        "Woow OpenAI's new Japan office and the optimized GPT-4 for Japanese are big steps. It means more focus on Asia and better AI for the Japanese language. Looking forward to seeing the impact.",
+        "How much is the difference in performance if some content inJapanese is translated to English and then the sameGPT is used as that for English, and if a GPT usesthe content in Japanese for training, then operateson Japanese content(input, output), and then theoutput is translated to English. Also, we can have areverse case, where the final output is desired inJapanese. I guess, the translation quality could be a problem.",
+        "",
+        "This is great provided you update your ethics too,  which I find eurocentric. In Asia the Swastika is a well being symbol. Tried to used it Dall-E and got all sort of comment that is related to western history and nothing to do with the world let alone the true meaning of the Swastika.... only one exemple among many.",
+        "Hi, I want you to give me back my money. You took almost 70 each month since 4 months, for a workspace that I have never used. I was for 2 people. I am alone. I tried it for free but I never used it. I want my money back. And I am so upset that I have stopped my ChatGPT each month. What you have done its not nice at all for someone who is close to you since the beginning",
+        "Big move OpenAI, we wish you success in Japan and Asia!",
+        "Lyckle Griek",
+        "Great step into the globalization of ChatGPT",
+        "Congratulations! This is a great step into a new market.",
+        "Global is the real village! Let us know of Africa plans",
+        "It is truly remarkable to see how far your team has come. from publishing ChatGPT, to everything you have achieved. Congratulations!",
+        "Let's go !"
+      ]
     },
     {
       "platform": "twitter",
       "cleaned_content": "Introducing OpenAI Japan, our first office in Asia, along with a new GPT-4 custom model specifically optimized for  (the Japanese language). https://t.co/mIcCpbC18m https://t.co/UJjQpBjKsO",
       "author_id": "tweet-662a4f0a726d8c2f4b6e73a6",
-      "comments": []
+      "comments": [
+        "Congratulations on the expansion with OpenAI Japan! It's an important step towards making AI accessible globally. I hope this trend continues, expanding to include a wider range of languages. This inclusivity not only opens doors for non-English speakers but also enriches the AI with diverse inputs. I'm looking forward to the day when text-to-speech technology will deliver as pleasurable an experience in German as in any other language. Keep up the great work! Waiting for GPT-5",
+        "Vladimir Alexeev",
+        "Create Stunning AI fashion photography for your brand using AI\nIntroducing Adstronaut AI , a Generative AI platform designed to help clothing brands and retailers turn their photos into stunning and diversified fashion photos\nTRY it out for FREE now!\nhttps://www.adstronaut.net/",
+        "Woow OpenAI's new Japan office and the optimized GPT-4 for Japanese are big steps. It means more focus on Asia and better AI for the Japanese language. Looking forward to seeing the impact.",
+        "How much is the difference in performance if some content inJapanese is translated to English and then the sameGPT is used as that for English, and if a GPT usesthe content in Japanese for training, then operateson Japanese content(input, output), and then theoutput is translated to English. Also, we can have areverse case, where the final output is desired inJapanese. I guess, the translation quality could be a problem.",
+        "",
+        "This is great provided you update your ethics too,  which I find eurocentric. In Asia the Swastika is a well being symbol. Tried to used it Dall-E and got all sort of comment that is related to western history and nothing to do with the world let alone the true meaning of the Swastika.... only one exemple among many.",
+        "Hi, I want you to give me back my money. You took almost 70 each month since 4 months, for a workspace that I have never used. I was for 2 people. I am alone. I tried it for free but I never used it. I want my money back. And I am so upset that I have stopped my ChatGPT each month. What you have done its not nice at all for someone who is close to you since the beginning",
+        "Big move OpenAI, we wish you success in Japan and Asia!",
+        "Lyckle Griek",
+        "Great step into the globalization of ChatGPT",
+        "Congratulations! This is a great step into a new market.",
+        "Global is the real village! Let us know of Africa plans",
+        "It is truly remarkable to see how far your team has come. from publishing ChatGPT, to everything you have achieved. Congratulations!",
+        "Let's go !"
+      ]
     },
     {
       "platform": "twitter",

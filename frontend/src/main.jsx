@@ -12,7 +12,7 @@ import MailPage from "./components/mail/page.jsx";
 
 import Layout from "./Layout.jsx";
 import LoginPage from "./components/Authentication/Login.jsx";
-import VideoUpload from "./Video/VideoForm.jsx";
+import VideoUpload from "./components/Video/VideoForm.jsx";
 import Forecast from "./components/Forecast/Forecast.jsx";
 import Researcher from "./Researcher/Researcher.jsx";
 import Vide from "./Vide/Vide.jsx";
@@ -48,6 +48,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/video",
+        element: <VideoUpload />,
+      },
+      {
+        path: "/user/llm",
         element: <Vide />,
       },
       {

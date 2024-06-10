@@ -32,17 +32,22 @@ const Header = () => {
           </li>
           <li>
             <Link to={"/user/video"}>
-              <Button variant="subtle">Video</Button>
+              <Button variant="subtle">Content Analysis</Button>
             </Link>
           </li>
           <li>
             <Link to={"/user/forecast"}>
-              <Button variant="subtle">Forecast</Button>
+              <Button variant="subtle">Prediction</Button>
             </Link>
           </li>
           <li>
           <Link to={"/user/researcher"}>
             <Button variant="subtle">Intelligent Researcher</Button>
+            </Link>
+          </li>
+          <li>
+          <Link to={"/user/llm"}>
+            <Button variant="subtle">LLM</Button>
             </Link>
           </li>
         </ul>
