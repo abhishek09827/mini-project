@@ -25,3 +25,19 @@ By achieving these objectives, Intelligent Insights aims to enable businesses to
 4. **Data Insights**: Provide actionable insights based on comprehensive data analysis.
 5. **Personalized Recommendations**: Offer tailored recommendations to customers based on their preferences and behaviors.
 6. **Customer Service Enhancements**: Improve customer service operations with intelligent automation and insights.
+
+## Installation
+
+To set up and run Intelligent Insights locally, follow these steps:
+
+1. **Clone the Repository**
+   ```sh
+   git clone https://github.com/yourusername/intelligent-insights.git
+   cd intelligent-insights
+   cd frontend
+   npm run dev
+
+   cd py_server
+   pip install -r requirements.txt
+   python app.py
+
