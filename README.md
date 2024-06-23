@@ -32,7 +32,7 @@ To set up and run Intelligent Insights locally, follow these steps:
 
 1. **Clone the Repository**
    ```sh
-   https://github.com/abhishek09827/mini-project/tree/trial
+   gh repo clone abhishek09827/mini-project
 2. **Get Into frontend directory**
    ```sh
    cd frontend
