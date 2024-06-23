@@ -32,11 +32,13 @@ To set up and run Intelligent Insights locally, follow these steps:
 
 1. **Clone the Repository**
    ```sh
-   git clone https://github.com/yourusername/intelligent-insights.git
-   cd intelligent-insights
+   https://github.com/abhishek09827/mini-project/tree/trial
+2. **Get Into frontend directory**
+   ```sh
    cd frontend
    npm run dev
-
+3. **Get Into Backend directory**
+   ```sh
    cd py_server
    pip install -r requirements.txt
    python app.py
